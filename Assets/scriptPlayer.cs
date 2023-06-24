@@ -13,6 +13,7 @@ public class scriptPlayer : MonoBehaviour
     public float dist = 100;
     public LayerMask mascara;
     private AudioSource som;
+    public static int municao;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class scriptPlayer : MonoBehaviour
         velRot = 80;
         rotIni = transform.localRotation;
         rbd = GetComponent<Rigidbody>();
+        municao = 1;
     }
 
     // Update is called once per frame
@@ -49,23 +51,31 @@ public class scriptPlayer : MonoBehaviour
         //Aplicando a rotação no PC
         transform.localRotation = rotIni * rotMouse;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            som.Play();
-            RaycastHit hit;
-            if (Physics.Raycast(cabeca.transform.position,
-                                cabeca.transform.forward,
-                                out hit,
-                                dist,
-                                mascara))
-            {
 
-                Rigidbody rbA;
-                rbA = hit.collider.GetComponent<Rigidbody>();
-                rbA.AddForce(cabeca.transform.forward * 500);
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (municao > 0)
+                {
+                    municao--;
+                    som.Play();
+                    RaycastHit hit;
+                    if (Physics.Raycast(cabeca.transform.position,
+                                        cabeca.transform.forward,
+                                        out hit,
+                                        dist,
+                                        mascara))
+                    {
+
+                        Rigidbody rbA;
+                        rbA = hit.collider.GetComponent<Rigidbody>();
+                        rbA.AddForce(cabeca.transform.forward * 500);
+
+                    }
+
+                }
 
             }
-        }
+
     }
 }
 
