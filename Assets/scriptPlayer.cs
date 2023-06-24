@@ -25,7 +25,7 @@ public class scriptPlayer : MonoBehaviour
         velRot = 80;
         rotIni = transform.localRotation;
         rbd = GetComponent<Rigidbody>();
-        municao = 1;
+        municao = 10;
     }
 
     // Update is called once per frame
@@ -66,9 +66,7 @@ public class scriptPlayer : MonoBehaviour
                                         mascara))
                     {
 
-                        Rigidbody rbA;
-                        rbA = hit.collider.GetComponent<Rigidbody>();
-                        rbA.AddForce(cabeca.transform.forward * 500);
+                        Destroy(hit.collider.gameObject);
 
                     }
 
