@@ -23,7 +23,7 @@ public class scriptPlayer : MonoBehaviour
         velRot = 80;
         rotIni = transform.localRotation;
         rbd = GetComponent<Rigidbody>();
-        municao = 10;
+        municao = 1;
     }
 
     // Update is called once per frame

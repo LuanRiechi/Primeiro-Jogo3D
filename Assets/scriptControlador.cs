@@ -10,6 +10,7 @@ public class scriptControlador : MonoBehaviour
     public static GameObject textPlacar;
     public static GameObject textMunicao;
     public GameObject telaGameOver;
+    public GameObject telaFimFase;
     public GameObject pc;
     public GameObject camera;
     // Start is called before the first frame update
@@ -35,6 +36,11 @@ public class scriptControlador : MonoBehaviour
         else
         {
             camera.transform.position = pc.transform.position;
+        }
+        if (placar == 50)
+        {
+            telaFimFase.SetActive(true);
+            Cursor.visible = true;
         }
 
     }
