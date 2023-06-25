@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class scriptControlador : MonoBehaviour
 {
     public static int placar;
     public static GameObject textPlacar;
     public static GameObject textMunicao;
+    public GameObject telaGameOver;
+    public GameObject pc;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,10 @@ public class scriptControlador : MonoBehaviour
     void Update()
     {
         textMunicao.GetComponent<TMP_Text>().text = "Munição: " + scriptPlayer.municao;
+        if (pc == null)
+        {
+            telaGameOver.SetActive(true);
+        }
     }
 
     public static void incrementarPlacar(int inc)
@@ -28,5 +35,10 @@ public class scriptControlador : MonoBehaviour
         placar += inc;
         textPlacar.GetComponent<TMP_Text>().text = "Placar: " + placar;
 
+    }
+
+    public void VoltarMenuInicial()
+    {
+        SceneManager.LoadScene(0);
     }
 }
